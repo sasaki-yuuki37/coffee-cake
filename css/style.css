@@ -1,0 +1,427 @@
+@charset "UTF-8";
+
+html {
+  font-size: 100%;
+}
+
+body {
+  background-color: #f2ece1;
+  font-family: "Meiryo", "Hiragino Sans", sans-serif;
+  color: #333;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* ↓Googleマップやyoutube埋め込み時の下の隙間を消す */
+iframe {
+  vertical-align: bottom;
+}
+
+/* ヘッダーエリア */
+#header-area {
+  display: flex;
+  padding: 50px;
+  margin-bottom: 50px;
+}
+/* ヘッダー */
+#header-area .header {
+  max-width: 130px;
+}
+.header .logo {
+  margin-bottom: 50px;
+}
+.header .logo a {
+  display: block;
+}
+.header .navi {
+  text-align: center;
+  font-size: 14px;
+}
+.header li {
+  margin-bottom: 30px;
+}
+/* メインビジュアル */
+.mainvisual {
+  width: 100%;
+  margin-left: 50px;
+  position: relative;
+}
+.mainvisual img {
+  width: 100%;
+  height: 500px;
+  border-radius: 30px;
+  object-fit: cover;
+}
+
+.header .logo img {
+  border-radius: 0;
+}
+
+/* スマートフォン設定 */
+@media screen and (max-width: 767px) {
+  #header-area {
+    flex-direction: column;
+    padding: 20px;
+    margin-bottom: 40px;
+  }
+  #header-area .header {
+    max-width: 767px;
+  }
+  .header .logo {
+    margin: 0 auto;
+    max-width: 80px;
+    margin-bottom: 20px;
+  }
+  /*   .header .navi{
+    display: none;
+  } */
+  .mainvisual {
+    margin-left: 0;
+  }
+  .mainvisual img {
+    height: auto;
+    object-fit: contain;
+  }
+  /*   ハンバーガーメニュー */
+  .hamburger {
+    background-color: #333;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    cursor: pointer;
+    top: 20px;
+    right: 20px;
+    z-index: 40;
+    border-radius: 10px;
+  }
+  .hamburger span {
+    background-color: #fff;
+    width: 30px;
+    height: 2px;
+    border-radius: 1px;
+    display: inline-block;
+    position: absolute;
+    left: 10px;
+    transition: all 0.4s;
+  }
+  .hamburger span:nth-of-type(1) {
+    top: 16px;
+  }
+  .hamburger span:nth-of-type(2) {
+    top: 25px;
+  }
+  .hamburger span:nth-of-type(3) {
+    top: 34px;
+  }
+  /*   ハンバーガーメニュー開いた時 */
+  #header-area .navi {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    margin: 0 auto;
+    background-color: #fff;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+  }
+  #header-area .menu {
+    padding-top: 80px;
+    overflow: auto;
+  }
+  /* ボタンを押した時 */
+  #header-area .navi.active {
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.6s;
+  }
+  /* ボタンをバツにする */
+  .hamburger.active span:nth-of-type(1) {
+    transform: rotate(-45deg);
+    top: 24px;
+  }
+  .hamburger.active span:nth-of-type(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-of-type(3) {
+    transform: rotate(45deg);
+    top: 24px;
+  }
+}
+
+/* 全ページ共通パーツのCSS */
+.wrapper {
+  max-width: 1040px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+.section-title-v {
+  writing-mode: vertical-lr;
+}
+.section-title-v .ja {
+  letter-spacing: 0.1rem;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.section-title-v .en {
+  letter-spacing: 0.1rem;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.btn {
+  display: block;
+  width: 200px;
+  border-radius: 30px;
+  height: 43px;
+  border: 1px #333 solid;
+  text-align: center;
+  line-height: 43px;
+  position: relative;
+}
+.btn::after {
+  content: "";
+  width: 25px;
+  height: 1px;
+  background-color: #333;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+}
+.btn::before {
+  content: "";
+  width: 8px;
+  height: 1px;
+  background-color: #333;
+  position: absolute;
+  top: 18px;
+  right: 14px;
+  rotate: 35deg;
+}
+.btn:hover {
+  background-color: #333;
+  color: #fff;
+}
+.btn:hover::after {
+  background-color: #fff;
+}
+.btn:hover::before {
+  background-color: #fff;
+}
+
+.section-title-h {
+  letter-spacing: 0.1rem;
+}
+.section-title-h .ja {
+  letter-spacing: 0.1rem;
+  font-size: 28px;
+  font-weight: bold;
+}
+.section-title-h .en {
+  letter-spacing: 0.1rem;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+/* 共通CSSのスマートフォン設定 */
+@media screen and (max-width: 767px) {
+  .section-title-v {
+    writing-mode: horizontal-tb;
+    margin-bottom: 20px;
+  }
+  .section-title-v .ja {
+    font-size: 22px;
+    margin-bottom: 0;
+  }
+  .section-title-v .en {
+    font-size: 10px;
+    letter-spacing: 0.2rem;
+  }
+  .btn {
+    margin: 0 auto;
+  }
+  .section-title-h .ja {
+    font-size: 22px;
+  }
+  .section-title-h .en {
+    font-size: 10px;
+  }
+}
+
+/* アクセス */
+#access {
+  background-color: #e9e1d1;
+}
+
+#access .inner {
+  display: flex;
+  padding: 80px 20px;
+}
+
+#access dl {
+  font-size: 14px;
+  margin-right: auto;
+}
+
+#access dt {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#access dd {
+  margin-bottom: 20px;
+}
+
+#access .map {
+  max-width: 580px;
+  width: 100%;
+  height: 360px;
+  margin: 0 40px;
+}
+
+#access .map iframe {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  #access .inner {
+    flex-direction: column-reverse;
+    padding: 60px 20px;
+  }
+  #access .map {
+    max-width: 560px;
+    width: 100%;
+    height: 230px;
+    margin: 0 0 30px;
+  }
+}
+
+/* フッター */
+#footer .menu-area {
+  text-align: center;
+}
+
+#footer .logo {
+  margin: 40px auto 50px;
+  width: 100px;
+}
+
+#footer .menu {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+#footer .menu li {
+  font-size: 14px;
+  margin: 0 15px;
+}
+
+#footer .sns {
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+#footer .sns li:first-child {
+  margin-right: 30px;
+}
+
+#footer p {
+  background-color: #9a8865;
+
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  padding: 20px;
+}
+
+#footer .logo img {
+  border-radius: 0;
+}
+
+@media screen and (max-width: 767px) {
+  #footer .logo {
+    width: 85px;
+    margin: 30px auto 30px;
+  }
+  #footer .menu li {
+    font-size: 12px;
+    margin: 0 10px;
+  }
+  #footer .sns {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+}
+
+/* ページタイトルのCSS */
+
+.mainvisual .page-title {
+  background-color: #f2ece1;
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+  max-width: 300px;
+  width: 100%;
+  border-radius: 0 30px 0 0;
+  padding-top: 15px;
+  /*   text-align: center; */
+}
+
+.mainvisual .page-title .ja {
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: normal;
+}
+
+.mainvisual .page-title .en {
+  text-align: center;
+  font-size: 28px;
+  display: block;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 767px) {
+  .mainvisual .page-title {
+    max-width: 180px;
+    line-height: 0.8;
+  }
+  .mainvisual .page-title .ja {
+    font-size: 10px;
+  }
+  .mainvisual .page-title .en {
+    font-size: 18px;
+  }
+}
+
+/* 共通CSS */
+.wrapper-1300 {
+  max-width: 1340px;
+  padding: 0 20px;
+  margin: 0 auto;
+}

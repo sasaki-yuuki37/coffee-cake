@@ -1,0 +1,176 @@
+@charset "UTF-8";
+
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 20px;
+  margin-bottom: 40px;
+}
+
+.post-list img {
+  border-radius: 30px;
+}
+
+.post-list .image {
+  margin-bottom: 10px;
+}
+
+.post-list time {
+  font-size: 12px;
+}
+
+.post-list .title {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.pagenation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.pagenation li {
+  margin: 0 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .post-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pagenation {
+    margin-bottom: 60px;
+  }
+}
+
+/* ブログポスト */
+.blog-post {
+  display: flex;
+}
+
+.post {
+  margin-bottom: 40px;
+}
+
+.blog-post .post {
+  max-width: 680px;
+  width: 100%;
+  margin-right: 40px;
+}
+
+.blog-post .post img {
+  border-radius: 30px;
+  width: 100%;
+}
+
+.post .thumbnail {
+  margin-bottom: 40px;
+}
+
+.post .info {
+  display: flex;
+  margin-bottom: 40px;
+  align-items: center;
+}
+
+.post time {
+  font-size: 12px;
+  margin-right: 20px;
+}
+
+.post .info .category {
+  font-size: 12px;
+  background-color: #fff;
+  padding: 2px 4px;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+.post .title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.content ul {
+  margin-left: 18px;
+  margin-bottom: 30px;
+}
+
+.content li {
+  list-style: disc;
+  line-height: 1.8;
+}
+
+.content p {
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.youtube {
+  margin: 40px 0;
+}
+
+.youtube iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+/* サイドバー */
+
+.sidebar {
+  max-width: 280px;
+}
+
+.sidebar .title {
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #707070;
+}
+
+.sidebar .tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.sidebar .tag-list li {
+  font-size: 12px;
+  background-color: #fff;
+  padding: 2px 4px;
+  border-radius: 4px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.side-post-list .post-thumbnail {
+  max-width: 80px;
+  width: 100%;
+  margin-right: 10px;
+  /*   flex-shrink: 0; */
+}
+
+.side-post-list li a {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.side-post-list .post-title {
+  font-size: 12px;
+}
+
+.btn {
+  margin: 0 auto 80px;
+}
+
+/* ブログ詳細のスマホ表示 */
+@media screen and (max-width: 767px) {
+  .blog-post {
+    flex-direction: column;
+  }
+}

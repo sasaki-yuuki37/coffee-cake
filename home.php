@@ -1,0 +1,122 @@
+<?php get_header(); ?>
+<!-- コンセプト -->
+<main>
+  <?php if (have_posts()): ?>
+    <ul>
+      <?php while (have_posts()): the_post(); ?>
+        <li><?php the_title(); ?></li>
+      <?php endwhile; ?>
+    </ul>
+  <?php endif; ?>
+
+  <section class="concept wrapper">
+    <div class="text">
+      <p class="title">ここはホームです。</p>
+      <p class="detail">
+        私たちが提供するコーヒーは、忙しい日常の中でほっと一息つけるような時間を作り出すためのコーヒーです。「一杯のコーヒーを通して人々の暮らしを豊かにする」そんな想いで今日もコーヒーを入れています。
+      </p>
+      <a href="concept.html" class="btn">詳しく見る</a>
+    </div>
+    <div class="image">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/top/concept.jpg" alt="" />
+    </div>
+    <h2 class="section-title-v">
+      <span class="ja">私たちの想い</span>
+      <span class="en">CONCEPT</span>
+    </h2>
+  </section>
+  <!--       メニュー -->
+  <section id="menu">
+    <div class="wrapper">
+      <h2 class="section-title-h">
+        <span class="ja">メニューのご紹介</span>
+        <span class="en">MENU</span>
+      </h2>
+      <ul class="menu-list">
+        <li><img src="<?php echo get_template_directory_uri(); ?>/img/top/menu1.jpg" alt="" /></li>
+        <li><img src="<?php echo get_template_directory_uri(); ?>/img/top/menu2.jpg" alt="" /></li>
+        <li><img src="<?php echo get_template_directory_uri(); ?>/img/top/menu3.jpg" alt="" /></li>
+        <li><img src="<?php echo get_template_directory_uri(); ?>/img/top/menu4.jpg" alt="" /></li>
+        <li><img src="<?php echo get_template_directory_uri(); ?>/img/top/menu5.jpg" alt="" /></li>
+        <li><img src="<?php echo get_template_directory_uri(); ?>/img/top/menu6.jpg" alt="" /></li>
+        <li><img src="<?php echo get_template_directory_uri(); ?>/img/top/menu7.jpg" alt="" /></li>
+        <li><img src="<?php echo get_template_directory_uri(); ?>/img/top/menu8.jpg" alt="" /></li>
+      </ul>
+    </div>
+  </section>
+  <!--      ブログ -->
+  <?php if (have_posts()): ?>
+    <section class="blog">
+      <div class="inner wrapper">
+        <h2 class="section-title-v">
+          <span class="ja">日々の様子</span>
+          <span class="en">BLOG</span>
+        </h2>
+
+
+        <div class="blog-item">
+          <?php the_post(); ?>
+          <div class="item-left">
+            <a href="<?php the_permalink(); ?>">
+              <div class="image">
+                <?php if (has_post_thumbnail()): ?>
+                  <?php the_post_thumbnail(); ?>
+                <?php else: ?>
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/common/noimage.png" alt="">
+                <?php endif; ?>
+              </div>
+              <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.n.j'); ?></time>
+              <p class="title"><?php the_title(); ?></p>
+            </a>
+          </div>
+
+          <?php if (have_posts()): ?>
+            <div class="item-right">
+              <?php the_post(); ?>
+              <div class="item-top">
+                <a href="<?php the_permalink(); ?>">
+                  <div class="image">
+                    <?php if (has_post_thumbnail()): ?>
+                      <?php the_post_thumbnail(); ?>
+                    <?php else: ?>
+                      <img src="<?php echo get_template_directory_uri(); ?>/img/common/noimage.png" alt="">
+                    <?php endif; ?>
+                  </div>
+                  <div class="text">
+                    <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.n.j'); ?></time>
+                    <p class="title">
+                      <?php the_title(); ?>
+                    </p>
+                  </div>
+                </a>
+              </div>
+              <?php if (have_posts()): the_post(); ?>
+                <div class="item-bottom">
+                  <a href="<?php the_permalink(); ?>">
+                    <div class="image">
+                      <?php if (has_post_thumbnail()): ?>
+                        <?php the_post_thumbnail(); ?>
+                      <?php else: ?>
+                        <img src="<?php echo get_template_directory_uri(); ?>/img/common/noimage.png" alt="">
+                      <?php endif; ?>
+                    </div>
+                    <div class="text">
+                      <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.n.j'); ?></time>
+                      <p class="title"><?php the_title(); ?></p>
+                    </div>
+                  </a>
+                </div>
+              <?php endif; ?>
+            </div>
+          <?php endif; ?>
+
+        </div>
+
+
+
+      </div>
+      <a href="blog.html" class="btn">全て見る</a>
+    </section>
+  <?php endif; ?>
+
+  <?php get_footer(); ?>
