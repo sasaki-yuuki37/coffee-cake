@@ -9,6 +9,7 @@
 
 .post-list img {
   border-radius: 30px;
+  height: auto;
 }
 
 .post-list .image {
@@ -152,6 +153,10 @@
   width: 100%;
   margin-right: 10px;
   /*   flex-shrink: 0; */
+}
+
+.side-post-list img {
+  height: auto;
 }
 
 .side-post-list li a {

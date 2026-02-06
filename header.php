@@ -10,11 +10,14 @@
   <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/img/common/apple-touch-icon.png" />
   <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css" />
-  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/top.css" />
-  <?php if (is_single()): ?>
+  <?php if (is_front_page()): ?>
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/top.css" />
+  <?php endif; ?>
+  <?php if (is_single() || is_home()): ?>
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/blog.css" />
-  <?php elseif (is_page('blog')) : ?>
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/blog.css" />
+  <?php endif; ?>
+  <?php if (is_page('concept')): ?>
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/concept.css" />
   <?php endif; ?>
   <?php wp_head(); ?>
 </head>
@@ -35,24 +38,30 @@
       </div>
       <nav class="navi">
         <ul class="menu">
-          <li><a href="index.html">トップ</a></li>
-          <li><a href="concept.html">コンセプト</a></li>
-          <li><a href="#menu">メニュー</a></li>
+          <li><a href="<?php echo esc_url(home_url('/')); ?>">トップ</a></li>
+          <li><a href="<?php echo esc_url(home_url('/concept/')); ?>">コンセプト</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#menu')); ?>">メニュー</a></li>
           <li><a href="<?php echo esc_url(home_url('/blog/')); ?>">ブログ</a>
           </li>
-          <li><a href="#access">アクセス</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#access')); ?>">アクセス</a></li>
         </ul>
       </nav>
     </header>
     <div class="mainvisual">
       <?php if (is_front_page()): ?>
         <img src="<?php echo get_template_directory_uri(); ?>/img/top/mainvisual.jpg" alt="" />
-      <?php elseif (is_single() || is_page('blog')) : ?>
+      <?php elseif (is_single() || is_home()) : ?>
         <img src="<?php echo get_template_directory_uri(); ?>/img/blog/mainvisual.jpg" alt="" />
         <div class="page-title">
           <span class="ja">日々の様子</span>
           <span class="en">BLOG</span>
         </div>
+      <?php elseif (is_page()): ?>
+        <img src="<?php echo get_template_directory_uri(); ?>/img/concept/mainvisual.jpg" alt="" />
+        <h1 class="page-title">
+          <span class="ja">私たちの想い</span>
+          <span class="en">CONCEPT</span>
+        </h1>
       <?php endif; ?>
     </div>
   </div>

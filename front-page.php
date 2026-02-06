@@ -45,32 +45,43 @@
     </div>
   </section>
   <!--      ブログ -->
-  <?php if (have_posts()): ?>
-    <section class="blog">
-      <div class="inner wrapper">
-        <h2 class="section-title-v">
-          <span class="ja">日々の様子</span>
-          <span class="en">BLOG</span>
-        </h2>
 
+  <section class="blog">
+    <div class="inner wrapper">
+      <h2 class="section-title-v">
+        <span class="ja">日々の様子</span>
+        <span class="en">BLOG</span>
+      </h2>
 
+      <?php
+      $q = new WP_query([
+        'post_type' => 'post',
+        'posts_per_page' => 3,
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'post_status' => 'publish',
+      ]);
+      ?>
+
+      <?php if ($q->have_posts()): ?>
         <div class="blog-item">
-          <?php the_post(); ?>
+
+          <?php $q->the_post(); ?>
           <div class="item-left">
             <!-- 以下はテンプレファイル呼び出し -->
             <?php get_template_part('template-parts/loop', 'blog'); ?>
 
           </div>
 
-          <?php if (have_posts()): ?>
+          <?php if ($q->have_posts()): ?>
             <div class="item-right">
-              <?php the_post(); ?>
+              <?php $q->the_post(); ?>
               <div class="item-top">
 
                 <?php get_template_part('template-parts/loop', 'blog'); ?>
 
               </div>
-              <?php if (have_posts()): the_post(); ?>
+              <?php if ($q->have_posts()): $q->the_post(); ?>
                 <div class="item-bottom">
                   <?php get_template_part('template-parts/loop', 'blog'); ?>
 
@@ -83,9 +94,9 @@
 
 
 
-      </div>
-      <a href="blog.html" class="btn">全て見る</a>
-    </section>
-  <?php endif; ?>
+    </div>
+    <a href="blog.html" class="btn">全て見る</a>
+  </section>
+<?php endif; ?>
 
-  <?php get_footer(); ?>
+<?php get_footer(); ?>
